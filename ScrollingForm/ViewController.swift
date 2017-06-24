@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: Outlets
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var usernameField: UITextField!
@@ -17,6 +18,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var addressField1: UITextField!
     @IBOutlet weak var addressField2: UITextField!
     @IBOutlet weak var postcodeField: UITextField!
+    
+    
+    
+    // MARK: Properties
+    
+    var keyboardHieght: Float = 0.0
+    var currentTextField: UITextField!
+    
     
     
 

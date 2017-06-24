@@ -159,12 +159,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addressField1" destination="REa-Pw-uM2" id="UfF-ou-F3g"/>
-                        <outlet property="addressField2" destination="v1G-df-zKq" id="xxv-D4-03w"/>
-                        <outlet property="passwordField" destination="UBX-8p-x41" id="KAO-qW-WAe"/>
-                        <outlet property="postcodeField" destination="fIs-Va-FCA" id="fH9-dP-RV2"/>
+                        <outlet property="addressField1" destination="vkh-T7-N88" id="cTs-uY-7z2"/>
+                        <outlet property="addressField2" destination="FkF-Gj-lg1" id="6Bi-5v-20R"/>
+                        <outlet property="passwordField" destination="Nrf-0Y-cHi" id="R7a-7h-0TE"/>
+                        <outlet property="postcodeField" destination="5Ay-98-R7d" id="Pkf-a8-Y4u"/>
                         <outlet property="scrollView" destination="a9q-ie-JNg" id="IJk-Tw-n4R"/>
-                        <outlet property="usernameField" destination="fZB-66-Bf4" id="qj9-3P-5od"/>
+                        <outlet property="usernameField" destination="Bb0-8t-hBh" id="J23-bU-O8H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
