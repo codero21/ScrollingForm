@@ -31,7 +31,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        usernameField.delegate = self
+        passwordField.delegate = self
+        addressField1.delegate = self
+        addressField2.delegate = self
+        postcodeField.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
