@@ -12,6 +12,12 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var usernameField: UILabel!
+    @IBOutlet weak var passwordField: UILabel!
+    @IBOutlet weak var addressField1: UILabel!
+    @IBOutlet weak var addressField2: UILabel!
+    @IBOutlet weak var postcodeField: UILabel!
+    
     
     
 
