@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
     
-    var keyboardHieght: Float = 0.0
+    var keyboardHeight: Float = 0.0
     var currentTextField: UITextField!
     
     
@@ -39,12 +39,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
         postcodeField.delegate = self
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow , object: self.view.window)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardDidHide(sender:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func keyboardDidShow(_ sender: NSNotification!) {
+        // get height of keyboard
+        let info: NSDictionary = sender.userInfo! as NSDictionary
+        
+        let value: NSValue = info.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        
+        let keyboardFrame: CGRect = value.cgRectValue
+        
+        // convert from Core Graphics 'CGFloat' to Swift 'Float'.
+        let cgFloatKeyboardHeight: CGFloat = keyboardFrame.size.height
+        
+        keyboardHeight = Float(cgFloatKeyboardHeight)
+        
+        // ensure current text field is visible,
+        // if not adjust the contentOffSet
+        // of the scrollView appropriately
+        let textFieldTop: Float = Float(currentTextField.frame.origin.y)
+        let textFieldBottom: Float = textFieldTop + Float(currentTextField.frame.size.height)
+        
+        if (textFieldBottom > keyboardHeight) {
+            scrollView.setContentOffset(CGPoint(x: 0, y: CGFloat(textFieldBottom - keyboardHeight)), animated: true)
+        }
+    
+    }
 
+    func keyboardDidHide(sender: NSNotification) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+    }
+    
 
 }
 
