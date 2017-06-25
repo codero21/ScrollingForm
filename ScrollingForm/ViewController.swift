@@ -54,6 +54,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: Keyboard methods
+    
     func keyboardDidShow(_ sender: NSNotification!) {
         // get height of keyboard
         let info: NSDictionary = sender.userInfo! as NSDictionary
@@ -82,6 +85,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func keyboardDidHide(sender: NSNotification) {
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
+    
+    
+    // TextField methods
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        currentTextField = textField
+        
+        var textFieldTop: Float = Float(currentTextField.frame.origin.y)
+        var textFieldBottom: Float = textFieldTop + Float(currentTextField.frame.size.height)
+        
+        if textFieldBottom > keyboardHeight && keyboardHeight != 0.0 {
+            scrollView.setContentOffset(CGPoint(x: 0, y: CGFloat(textFieldBottom - keyboardHeight)), animated: true)
+        }
+        
+    }
+    
     
 
 }
